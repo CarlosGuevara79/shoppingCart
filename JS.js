@@ -6,56 +6,56 @@ const productos = [
         Color: "Rojo",
         precio: 149.99,
         cantidadDisponible: 10,
-       /* imagen: "https://raw.githubusercontent.com/albertomendooza/DPS-UDB-2024/main/img/img1.png"*/
+       /* imagen: */
     },
     {
         id: 2,
         nombre: "Apple iPhone",
         precio: 1259.99,
         cantidadDisponible: 5,
-        /* imagen: "https://raw.githubusercontent.com/albertomendooza/DPS-UDB-2024/main/img/img2.png"*/
+        /* imagen: */
     },
     {
         id: 3,
         nombre: "Cámara Sony",
         precio: 89.99,
         cantidadDisponible: 7,
-      /* imagen: "https://raw.githubusercontent.com/albertomendooza/DPS-UDB-2024/main/img/img3.png"*/
+      /* imagen: */
     },
     {
         id: 4,
         nombre: "Apple iPad",
         precio: 890.99,
         cantidadDisponible: 7,
-       /* imagen: "https://raw.githubusercontent.com/albertomendooza/DPS-UDB-2024/main/img/img4.png"*/
+       /* imagen: */
     },
     {
         id: 5,
         nombre: "Audífonos Sony",
         precio: 189.99,
         cantidadDisponible: 7,
-       /*imagen: "https://raw.githubusercontent.com/albertomendooza/DPS-UDB-2024/main/img/img5.png"*/
+       /*imagen: */
     },
     {
         id: 6,
         nombre: "Samsung Galaxy S24 Ultra",
         precio: 1249.99,
         cantidadDisponible: 7,
-        /*imagen: "https://raw.githubusercontent.com/albertomendooza/DPS-UDB-2024/main/img/img6.png"*/
+        /*imagen: */
     },
     {
         id: 7,
         nombre: "Samsung Galaxy Z Flip5",
         precio: 849.99,
         cantidadDisponible: 7,
-       /* imagen: "https://raw.githubusercontent.com/albertomendooza/DPS-UDB-2024/main/img/img7.png"*/
+       /* imagen: "*/
     },
     {
         id: 8,
         nombre: "Samsung Galaxy S23 FE",
         precio: 520.99,
         cantidadDisponible: 7,
-      /*  imagen: "https://raw.githubusercontent.com/albertomendooza/DPS-UDB-2024/main/img/img8.png"*/
+      /*  imagen: */
     }
     
 ];
