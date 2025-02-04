@@ -67,8 +67,10 @@ window.updateCart = function updateCart() {
 
         total += producto.precio * producto.cantidad;
     });
-
     document.getElementById('total').textContent = total.toFixed(2);
+    //actualiza el contador
+    updateProductCount();
+
 }
 
 // Elimina un producto del carrito
@@ -164,10 +166,20 @@ abrirCarritoBtn.addEventListener('click', () => {
 cerrarCarritoBtn.addEventListener('click', () => {
     carrito.classList.remove('abierto'); // Cierra el carrito
     abrirCarritoBtn.style.display = 'block'; // Muestra el botón
+
 });
 
+//funcion para actualizar la cantidad de productos en el carrito
+window.updateProductCount = function updateProductCount() {
+    const contador = productosCarrito.reduce((total, producto) => total + producto.cantidad, 0);
+    const abrirCarritoBtn = document.getElementById('abrirCarrito');
 
-console.log(productosCarrito)
+    if (contador === 0) {
+        abrirCarritoBtn.textContent = "Abrir Carrito"; // Si el carrito está vacío
+    } else {
+        abrirCarritoBtn.textContent = `Abrir Carrito (${contador} productos)`; // Si hay productos
+    }
+}
 
 // Inicializa la tienda
 showProducts();
