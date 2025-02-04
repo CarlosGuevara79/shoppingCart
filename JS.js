@@ -2,59 +2,66 @@
 const productos = [
     {
         id: 1,
-        nombre: "Adidas Samba",
-        Color: "Rojo",
-        precio: 149.99,
+        nombre: "Tocones Miu Miu",
+        Color: "Rojo Vino",
+        precio: 199.99,
         cantidadDisponible: 10,
        /* imagen: */
     },
     {
         id: 2,
-        nombre: "Apple iPhone",
-        precio: 1259.99,
+        nombre: "Zapatilla deportiva Onitsuka Tiger",
+        precio: 400,
+        Color: "Amarilla",
         cantidadDisponible: 5,
         /* imagen: */
     },
     {
         id: 3,
-        nombre: "Cámara Sony",
-        precio: 89.99,
-        cantidadDisponible: 7,
+        nombre: "Mocasines",
+        precio: 24.99,
+        Color: "Negros",
+        cantidadDisponible: 8,
       /* imagen: */
     },
     {
         id: 4,
-        nombre: "Apple iPad",
-        precio: 890.99,
-        cantidadDisponible: 7,
+        nombre: "Zapatillas Nike",
+        precio: 169.99,
+        Color: "Celeste",
+        cantidadDisponible: 15,
        /* imagen: */
     },
     {
         id: 5,
-        nombre: "Audífonos Sony",
-        precio: 189.99,
-        cantidadDisponible: 7,
+        nombre: "Botines Celine",
+        precio: 199.99,
+        Color: "Negro",
+        cantidadDisponible: 3,
        /*imagen: */
     },
     {
         id: 6,
-        nombre: "Samsung Galaxy S24 Ultra",
-        precio: 1249.99,
-        cantidadDisponible: 7,
+        nombre: "Zapatillas Converse",
+        precio: 149.99,
+        Color: "Negro",
+        cantidadDisponible: 5,
         /*imagen: */
     },
     {
         id: 7,
-        nombre: "Samsung Galaxy Z Flip5",
-        precio: 849.99,
-        cantidadDisponible: 7,
+        nombre: "Tennis New Balance",
+        precio: 149.99,
+        Color: "Blancos",
+        cantidadDisponible: 10,
        /* imagen: "*/
     },
     {
         id: 8,
-        nombre: "Samsung Galaxy S23 FE",
-        precio: 520.99,
-        cantidadDisponible: 7,
+        nombre: "Balerinas Dior",
+        precio: 529.99,
+        Color: "Blanco Perla",
+        cantidadDisponible: 10,
       /*  imagen: */
     }
     
