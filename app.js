@@ -28,7 +28,7 @@ function showProducts() {
 }
 
 // Agrega un producto al carrito
-function addToCart(productId) {
+window.addToCart = function addToCart(productId) {
     const producto = productos.find(p => p.id === productId);
     const cantidad = parseInt(document.getElementById(`quantity-${productId}`).value);
 
@@ -41,14 +41,14 @@ function addToCart(productId) {
         }
 
         producto.cantidadDisponible -= cantidad;
-        actualizarCarrito();
+        updateCart();
     } else {
         alert("Cantidad no válida.");
     }
 }
 
 // Actualiza el carrito de compras
-function actualizarCarrito() {
+window.updateCart = function updateCart() {
     const cartItems = document.getElementById('carrito');
     cartItems.innerHTML = '';
     let total = 0;
@@ -59,7 +59,7 @@ function actualizarCarrito() {
         cartItem.innerHTML = `
             <span>${producto.nombre} - ${producto.cantidad} x $${producto.precio.toFixed(2)}</span>
             <span>$${(producto.precio * producto.cantidad).toFixed(2)}</span>
-            <button class="btn btn-danger btn-sm" onclick="eliminarDelCarrito(${producto.id})">Eliminar</button>
+            <button class="btn btn-danger btn-sm" onclick="deleteFromCart(${producto.id})">Eliminar</button>
         `;
         cartItems.appendChild(cartItem);
 
@@ -70,13 +70,13 @@ function actualizarCarrito() {
 }
 
 // Elimina un producto del carrito
-function eliminarDelCarrito(productId) {
+window.deleteFromCart = function deleteFromCart(productId) {
     const producto = carrito.find(p => p.id === productId);
     const productoOriginal = productos.find(p => p.id === productId);
     productoOriginal.cantidadDisponible += producto.cantidad;
     
     carrito = carrito.filter(p => p.id !== productId);
-    actualizarCarrito();
+    updateCart();
     showProducts();
 }
 
@@ -84,7 +84,7 @@ function eliminarDelCarrito(productId) {
 // Resto del código permanece igual
 
 // Nueva función para generar la factura
-function generarFactura() {
+window.generateInvoice = function generateInvoice() {
     const facturaDiv = document.getElementById('factura');
     facturaDiv.innerHTML = ''; // Limpiar cualquier factura anterior
 
