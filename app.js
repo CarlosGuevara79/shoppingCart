@@ -153,9 +153,6 @@ document.getElementById('pagar').addEventListener('click', function() {
     showProducts();
 });
 
-// Variables
-
-
 // Función para abrir el carrito
 abrirCarritoBtn.addEventListener('click', () => {
     carrito.classList.add('abierto'); // Abre el carrito
