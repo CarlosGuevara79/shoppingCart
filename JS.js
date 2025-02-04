@@ -2,8 +2,9 @@
 const productos = [
     {
         id: 1,
-        nombre: "Apple Mac",
-        precio: 1499.99,
+        nombre: "Adidas Samba",
+        Color: "Rojo",
+        precio: 149.99,
         cantidadDisponible: 10,
        /* imagen: "https://raw.githubusercontent.com/albertomendooza/DPS-UDB-2024/main/img/img1.png"*/
     },
