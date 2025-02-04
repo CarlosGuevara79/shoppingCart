@@ -101,3 +101,77 @@ body {
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
+/* Estilo general para el carrito */
+.carrito {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 300px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px 0 0 10px;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(100%); /* Inicialmente oculto a la derecha */
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.carrito-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+}
+
+.carrito-header h5 {
+    margin: 0;
+}
+
+.carrito-footer {
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #ddd;
+    text-align: center;
+}
+
+.carrito-footer {
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #ddd;
+    text-align: center;
+}
+
+.productos-carrito {
+    padding: 10px;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+/* Estilo para el botón de abrir */
+.carrito-boton {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 1001;
+    border-radius: 50%;
+}
+
+/* Estilos para el botón de cerrar carrito */
+#cerrarCarrito {
+    background: #f44336;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* Animación para cuando el carrito se abre */
+.carrito.abierto {
+    transform: translateX(0); /* El carrito se desplaza hacia la izquierda */
+}
