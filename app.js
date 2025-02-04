@@ -1,76 +1,10 @@
 // Lista de productos con rutas de imágenes y cantidad disponible
-const productos = [
-    {
-        id: 1,
-        nombre: "Tocones Miu Miu",
-        Color: "Rojo Vino",
-        precio: 199.99,
-        cantidadDisponible: 10,
-       /* imagen: */
-    },
-    {
-        id: 2,
-        nombre: "Zapatilla deportiva Onitsuka Tiger",
-        precio: 400,
-        Color: "Amarilla",
-        cantidadDisponible: 5,
-        /* imagen: */
-    },
-    {
-        id: 3,
-        nombre: "Mocasines",
-        precio: 24.99,
-        Color: "Negros",
-        cantidadDisponible: 8,
-      /* imagen: */
-    },
-    {
-        id: 4,
-        nombre: "Zapatillas Nike",
-        precio: 169.99,
-        Color: "Celeste",
-        cantidadDisponible: 15,
-       /* imagen: */
-    },
-    {
-        id: 5,
-        nombre: "Botines Celine",
-        precio: 199.99,
-        Color: "Negro",
-        cantidadDisponible: 3,
-       /*imagen: */
-    },
-    {
-        id: 6,
-        nombre: "Zapatillas Converse",
-        precio: 149.99,
-        Color: "Negro",
-        cantidadDisponible: 5,
-        /*imagen: */
-    },
-    {
-        id: 7,
-        nombre: "Tennis New Balance",
-        precio: 149.99,
-        Color: "Blancos",
-        cantidadDisponible: 10,
-       /* imagen: "*/
-    },
-    {
-        id: 8,
-        nombre: "Balerinas Dior",
-        precio: 529.99,
-        Color: "Blanco Perla",
-        cantidadDisponible: 10,
-      /*  imagen: */
-    }
-    
-];
+import {productos} from "./data/productos.js";
 
 let carrito = [];
 
 // Renderiza los productos en la página
-function renderizarProductos() {
+function showProducts() {
     const productList = document.getElementById('productos');
     productList.innerHTML = ''; // Limpiar la lista antes de agregar productos
 
@@ -85,7 +19,7 @@ function renderizarProductos() {
                     <p class="card-text">$${producto.precio.toFixed(2)}</p>
                     <p class="card-text">Cantidad disponible: ${producto.cantidadDisponible}</p>
                     <input type="number" min="1" max="${producto.cantidadDisponible}" value="1" id="quantity-${producto.id}" class="form-control mb-2">
-                    <button class="btn btn-primary" onclick="agregarAlCarrito(${producto.id})">Agregar al Carrito</button>
+                    <button class="btn btn-primary" onclick="addToCart(${producto.id})">Agregar al Carrito</button>
                 </div>
             </div>
         `;
@@ -94,15 +28,15 @@ function renderizarProductos() {
 }
 
 // Agrega un producto al carrito
-function agregarAlCarrito(productId) {
+function addToCart(productId) {
     const producto = productos.find(p => p.id === productId);
-    const cantidad = parseInt(document.getElementById(quantity-${productId}).value);
+    const cantidad = parseInt(document.getElementById(`quantity-${productId}`).value);
 
     if (cantidad > 0 && cantidad <= producto.cantidadDisponible) {
         const productoEnCarrito = carrito.find(p => p.id === productId);
         if (productoEnCarrito) {
             productoEnCarrito.cantidad += cantidad;
-        } else {
+        } else {    
             carrito.push({ ...producto, cantidad: cantidad });
         }
 
@@ -143,7 +77,7 @@ function eliminarDelCarrito(productId) {
     
     carrito = carrito.filter(p => p.id !== productId);
     actualizarCarrito();
-    renderizarProductos();
+    showProducts();
 }
 
 
@@ -212,8 +146,8 @@ document.getElementById('pagar').addEventListener('click', function() {
     alert('Pago realizado con éxito.');
     carrito = [];
     actualizarCarrito();
-    renderizarProductos();
+    showProducts();
 });
 
 // Inicializa la tienda
-renderizarProductos();
+showProducts();
