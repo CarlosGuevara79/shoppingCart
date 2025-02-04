@@ -1,0 +1,103 @@
+/* Variables CSS */
+:root {
+    --color-primario: #9bab62b9;
+    --color-secundario: #28a745;
+    --fuente-primaria: Arial, sans-serif;
+}
+  
+
+/* Estilos generales */
+body {
+    font-family: var(--fuente-primaria);
+    padding: 15px;
+    background-color: #a8a8a895; /* Color de fondo suave */
+}
+
+
+/* Estilos del carrito */
+#carrito {
+    background: white;
+    padding: 50px;
+    border-radius: 5px;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+  
+/* Estilos del banner */
+.banner {
+    width: 100%;
+    padding: 50px 10px;
+    background: linear-gradient(to right, var(--color-primario), #7aaeea);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 10px 23px 305px rgba(147, 173, 228, 0.43);
+    position: relative;
+    margin-bottom: 40px;
+}
+  
+/* Estilo del título dentro del banner */
+.titulo-principal {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 5rem;
+    color: rgb(117, 56, 56);
+    text-align: center;
+    position: relative;
+    padding: 20px;
+    border-radius: 10px;
+    overflow:visible;
+}
+  
+/*.titulo-principal::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120%;
+    height: 120%;
+    background: rgba(125, 179, 229, 0.43);
+    transform: translate(-50%, -50%) rotate(45deg);
+    z-index: 1;
+}*/
+  
+.titulo-principal::after {
+    content: 'Bienvenidos';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    color: #8d4444;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    opacity: 0.8;
+    z-index: 2;
+    animation: bounce 2s infinite;
+}
+  
+@keyframes bounce {
+    0%, 100% {
+      transform: translateX(-50%) translateY(0);
+    }
+    50% {
+      transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* Añadir espacio entre los productos */
+#productos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Espacio entre los cuadros */
+    justify-content: center; /* Centra los productos horizontalmente */
+}
+
+.producto {
+    flex: 0 1 calc(33.333% - 20px); /* Ajusta el ancho y permite flexibilidad */
+    margin-bottom: 20px; /* Espacio debajo de cada cuadro */
+    background: white;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
