@@ -1,33 +1,45 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Store</title>
+    <title>Shopping CART UDB</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="Style.css"> <!-- Ruta al CSS -->
+    <link rel="stylesheet" href="style.css"> <!-- Ruta al CSS -->
 </head>
-<body>
 
+<body>
     <!-- Banner con el título de la página -->
     <div class="banner">
-        <h1 class="titulo-principal">Zapateria 503</h1>
+        <h1 class="titulo-principal">UDB BOUTIQUE </h1>
     </div>
 
     <div class="container mt-5">
         <div id="productos" class="row mt-4 justify-content-center">
             <!-- Aqui estara el orden de los productos -->
         </div>
-    
-        <h2 class="mt-5">Carrito de Compras</h2>
-        <ul id="carrito" class="list-group"></ul>
-        <p class="mt-3 font-weight-bold">Total: $<span id="total">0</span></p>
-        <button id="pagar" class="btn btn-success">Pagar</button>
-    
+        <!-- Carrito de compras -->
+        <div id="carrito" class="carrito">
+            <div class="carrito-header">
+                <h5>Carrito</h5>
+                <button id="cerrarCarrito" class="btn btn-light">X</button>
+            </div>
+            <div id="productosCarrito" class="productos-carrito">
+                <!-- Aquí se mostrarán los productos del carrito -->
+            </div>
+            <div class="carrito-footer">                 <!-- Aqui se muestra el pie del carrito-->
+                <p class="mt-3 font-weight-bold">Total: $<span id="total">0</span></p>
+                <button id="pagar" class="btn btn-sucess">Pagar</button>
+            </div>
+        </div>
+
+        <!-- Botón flotante para abrir el carrito -->
+        <button id="abrirCarrito" class="btn btn-primary carrito-boton">Abrir Carrito</button>
         <!-- Aqui se va a generar la factura despues de la compra -->
         <div id="factura" class="mt-5"></div>
     </div>
-    
-    <script src="JS.js?v=1.0"></script>
+    <script type="module" src="app.js?v=1.0"></script>
 </body>
+
 </html>
