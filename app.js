@@ -157,11 +157,13 @@ document.getElementById('pagar').addEventListener('click', function() {
 // Función para abrir el carrito
 abrirCarritoBtn.addEventListener('click', () => {
     carrito.classList.add('abierto'); // Abre el carrito
+    abrirCarritoBtn.style.display = 'none'; // Oculta el botón
 });
 
 // Función para cerrar el carrito
 cerrarCarritoBtn.addEventListener('click', () => {
     carrito.classList.remove('abierto'); // Cierra el carrito
+    abrirCarritoBtn.style.display = 'block'; // Muestra el botón
 });
 
 

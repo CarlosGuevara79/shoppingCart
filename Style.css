@@ -101,6 +101,7 @@ body {
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
+
 /* Estilo general para el carrito */
 .carrito {
     position: fixed;
@@ -119,7 +120,6 @@ body {
     flex-direction: column;
 }
 
-
 .carrito-header {
     display: flex;
     justify-content: space-between;
@@ -130,13 +130,6 @@ body {
 
 .carrito-header h5 {
     margin: 0;
-}
-
-.carrito-footer {
-    padding: 10px;
-    background-color: #f8f9fa;
-    border-top: 1px solid #ddd;
-    text-align: center;
 }
 
 .carrito-footer {
@@ -174,4 +167,8 @@ body {
 /* Animación para cuando el carrito se abre */
 .carrito.abierto {
     transform: translateX(0); /* El carrito se desplaza hacia la izquierda */
+}
+
+#carrito.abierto ~ #abrirCarrito {
+    display: none;
 }
