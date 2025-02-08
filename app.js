@@ -83,7 +83,19 @@ window.deleteFromCart = function deleteFromCart(productId) {
     updateCart();
     showProducts();
 }
-
+// Vacia el carrito--
+window.deleteAllFromCart = function deleteAllFromCart() {
+    // Restaura las cantidades disponibles del carrito
+    for (let i = 0; i < productosCarrito.length; i++) {
+      const producto = productosCarrito[i];
+      const productoOriginal = productos.find((p) => p.id === producto.id);
+      productoOriginal.cantidadDisponible += producto.cantidad;
+    }
+    // Limpia la lista de productos del carrito
+    productosCarrito = [];
+    updateCart();
+    showProducts();
+  }
 
 // Resto del código permanece igual
 
