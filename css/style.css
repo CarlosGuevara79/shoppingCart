@@ -104,6 +104,7 @@ body {
 
 /* Estilo general para el carrito */
 .carrito {
+    height: 50vh; /*ajuste de altura de la ventana para el scroll*/
     position: fixed;
     right: 0;
     top: 50%;
@@ -125,7 +126,7 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 10px;
-    background-color: #f8f9fa;
+    background-color: #c0c0c0;
     border-bottom: 1px solid #ddd;
   background-color: #c0c0c0;
 }
@@ -136,7 +137,7 @@ body {
 
 .carrito-footer {
     padding: 10px;
-    background-color: #f8f9fa;
+    background-color: #c0c0c0;
     border-top: 1px solid #ddd;
     text-align: center;
   background-color: #c0c0c0;
