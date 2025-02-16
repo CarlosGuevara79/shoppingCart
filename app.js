@@ -61,7 +61,9 @@ window.updateCart = function updateCart() {
         cartItem.innerHTML = `
             <span>${producto.nombre} - ${producto.cantidad} x $${producto.precio.toFixed(2)}</span>
             <span>$${(producto.precio * producto.cantidad).toFixed(2)}</span>
+            <br>
             <button class="btn btn-danger btn-sm" onclick="deleteFromCart(${producto.id})">Eliminar</button>
+             <button style="background-color: #3CB371;"class="btn btn-sucess btn-sm" onclick="addToCart(${producto.id})">Añadir</button>
         `;
         cartItems.appendChild(cartItem);
 
@@ -83,7 +85,19 @@ window.deleteFromCart = function deleteFromCart(productId) {
     updateCart();
     showProducts();
 }
-
+// Vacia el carrito--
+window.deleteAllFromCart = function deleteAllFromCart() {
+  // Restaura las cantidades disponibles del carrito
+  for (let i = 0; i < productosCarrito.length; i++) {
+    const producto = productosCarrito[i];
+    const productoOriginal = productos.find((p) => p.id === producto.id);
+    productoOriginal.cantidadDisponible += producto.cantidad;
+  }
+  // Limpia la lista de productos del carrito
+  productosCarrito = [];
+  updateCart();
+  showProducts();
+};
 
 // Resto del código permanece igual
 
