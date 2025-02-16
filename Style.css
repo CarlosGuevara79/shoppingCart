@@ -153,6 +153,20 @@ body {
     z-index: 1001;
     border-radius: 50%;
 }
+/* Cambia el color de fondo del botón del carrito al pasar el cursor */
+.carrito-boton:hover {
+  background-color: #7aaeea;
+}
+/* Estilo para el contador */
+#contadorCarrito {
+  position: absolute;
+  top: -10px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 9px;
+  font-size: 16px;
+}
 
 /* Estilos para el botón de cerrar carrito */
 #cerrarCarrito {
