@@ -169,13 +169,9 @@ cerrarCarritoBtn.addEventListener('click', () => {
 //funcion para actualizar la cantidad de productos en el carrito
 window.updateProductCount = function updateProductCount() {
     const contador = productosCarrito.reduce((total, producto) => total + producto.cantidad, 0);
-    const abrirCarritoBtn = document.getElementById('abrirCarrito');
+    const contadorCarrito = document.getElementById('contadorCarrito');
 
-    if (contador === 0) {
-        abrirCarritoBtn.textContent = "Abrir Carrito"; // Si el carrito está vacío
-    } else {
-        abrirCarritoBtn.textContent = `Abrir Carrito (${contador} productos)`; // Si hay productos
-    }
+        contadorCarrito.textContent = contador; // Si el carrito está vacío aparecera en 0, pero aumentara de valor conforme se vallan añadiendo productos
 }
 
 // Inicializa la tienda
