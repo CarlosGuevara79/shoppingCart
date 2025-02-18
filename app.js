@@ -41,13 +41,14 @@ window.addToCart = function addToCart(productId) {
         } else {    
             productosCarrito.push({ ...producto, cantidad: cantidad });
         }
-
         producto.cantidadDisponible -= cantidad;
+        const scrollY = window.scrollY;
         updateCart();
+        showProducts();
+        window.scrollTo(0, scrollY);
     } else {
         alert("Cantidad no válida.");
     }
-    showProducts();
 }
 
 // Actualiza el carrito de compras
