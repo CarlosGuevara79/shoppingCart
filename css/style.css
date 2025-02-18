@@ -17,7 +17,7 @@ body {
 /* Estilos del carrito */
 #carrito {
     background: white;
-    padding: 50px;
+    padding: 10px;
     border-radius: 5px;
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
@@ -48,18 +48,6 @@ body {
     overflow:visible;
 }
   
-/*.titulo-principal::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 120%;
-    height: 120%;
-    background: rgba(125, 179, 229, 0.43);
-    transform: translate(-50%, -50%) rotate(45deg);
-    z-index: 1;
-}*/
-  
 .titulo-principal::after {
     content: 'Bienvenidos';
     position: absolute;
@@ -86,7 +74,7 @@ body {
 
 /* Añadir espacio entre los productos */
 #productos {
-    display: flex;
+    display: static;
     flex-wrap: wrap;
     gap: 20px; /* Espacio entre los cuadros */
     justify-content: center; /* Centra los productos horizontalmente */
@@ -104,12 +92,11 @@ body {
 
 /* Estilo general para el carrito */
 .carrito {
-   height: 52vh; /*ajuste de altura de la ventana para desplegar scroll*/
     position: fixed;
-    right: 0;
+    right: 0px;
     top: 50%;
     transform: translateY(-50%);
-    width: 300px;
+    width: 400px;
     background-color: white;
     border: 1px solid #ddd;
     border-radius: 10px 0 0 10px;
@@ -119,13 +106,13 @@ body {
     z-index: 1000;
     display: flex;
     flex-direction: column;
-  height: 50vh; /*ajuste de altura de la ventana para el scroll*/
+    height: 45vh; /*ajuste de altura de la ventana para el scroll*/
 }
 
 .carrito-header {
     display: flex;
     justify-content: space-between;
-    width: 25vw; /*ajuste de ancho del header*/
+    /* width: 25vw; ajuste de ancho del header */
     padding: 10px;
     background-color: #c0c0c0;
     border-bottom: 1px solid #ddd;
@@ -140,7 +127,7 @@ body {
 .carrito-footer {
     padding: 10px;
     background-color: #c0c0c0;
-    width: 25vw; /*ajuste de ancho del footer*/
+    /* width: 25vw; ajuste de ancho del footer */
     background-color: #f8f9fa;
     border-top: 1px solid #ddd;
     text-align: center;
@@ -150,7 +137,7 @@ body {
 .productos-carrito {
     padding: 10px;
     overflow-y: auto;
-    width: 22vw; /* ajuste de ancho donde aparecen los productos */
+    /* width: 22vw; ajuste de ancho donde aparecen los productos */
     flex-grow: 1;
 }
 

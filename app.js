@@ -47,6 +47,7 @@ window.addToCart = function addToCart(productId) {
     } else {
         alert("Cantidad no válida.");
     }
+    showProducts();
 }
 
 // Actualiza el carrito de compras
@@ -79,12 +80,20 @@ window.updateCart = function updateCart() {
 window.deleteFromCart = function deleteFromCart(productId) {
     const producto = productosCarrito.find(p => p.id === productId);
     const productoOriginal = productos.find(p => p.id === productId);
-    productoOriginal.cantidadDisponible += producto.cantidad;
-    
-    productosCarrito = productosCarrito.filter(p => p.id !== productId);
-    updateCart();
-    showProducts();
-}
+
+    if (producto) {
+        if (producto.cantidad > 1) {
+            producto.cantidad--; // Reducir la cantidad en 1
+            productoOriginal.cantidadDisponible++; // Devolver stock al inventario
+        } else {
+            productoOriginal.cantidadDisponible += producto.cantidad; // Devolver stock antes de eliminar
+            productosCarrito = productosCarrito.filter(p => p.id !== productId); // Eliminar del carrito
+        }
+    }
+    updateCart(); // Actualizar el carrito
+    showProducts(); // Refrescar productos
+};
+
 // Vacia el carrito--
 window.deleteAllFromCart = function deleteAllFromCart() {
   // Restaura las cantidades disponibles del carrito
