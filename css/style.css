@@ -104,7 +104,7 @@ body {
 
 /* Estilo general para el carrito */
 .carrito {
-    height: 50vh; /*ajuste de altura de la ventana para el scroll*/
+   height: 52vh; /*ajuste de altura de la ventana para desplegar scroll*/
     position: fixed;
     right: 0;
     top: 50%;
@@ -125,6 +125,7 @@ body {
 .carrito-header {
     display: flex;
     justify-content: space-between;
+    width: 25vw; /*ajuste de ancho del header*/
     padding: 10px;
     background-color: #c0c0c0;
     border-bottom: 1px solid #ddd;
@@ -132,12 +133,15 @@ body {
 }
 
 .carrito-header h5 {
+    font-style: italic;
     margin: 0;
 }
 
 .carrito-footer {
     padding: 10px;
     background-color: #c0c0c0;
+    width: 25vw; /*ajuste de ancho del footer*/
+    background-color: #f8f9fa;
     border-top: 1px solid #ddd;
     text-align: center;
   background-color: #c0c0c0;
@@ -146,6 +150,7 @@ body {
 .productos-carrito {
     padding: 10px;
     overflow-y: auto;
+    width: 22vw; /* ajuste de ancho donde aparecen los productos */
     flex-grow: 1;
 }
 
@@ -156,6 +161,20 @@ body {
     bottom: 20px;
     z-index: 1001;
     border-radius: 50%;
+}
+/* Cambia el color de fondo del botón del carrito al pasar el cursor */
+.carrito-boton:hover {
+  background-color: #7aaeea;
+}
+/* Estilo para el contador */
+#contadorCarrito {
+  position: absolute;
+  top: -10px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 9px;
+  font-size: 16px;
 }
 
 /* Estilos para el botón de cerrar carrito */
