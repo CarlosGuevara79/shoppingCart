@@ -1,11 +1,6 @@
 // Lista de productos con rutas de imágenes y cantidad disponible
 import {productos} from "./data/productos.js";
 
-function agregarAlCarrito(nombre, precio) {
-    alert(`Añadido al carrito: ${nombre} - $${precio}`);
-}
-
-
 let productosCarrito = [];
 const carrito = document.getElementById('carrito');
 const abrirCarritoBtn = document.getElementById('abrirCarrito');
@@ -204,4 +199,3 @@ window.updateProductCount = function updateProductCount() {
 
 // Inicializa la tienda
 showProducts();
-
