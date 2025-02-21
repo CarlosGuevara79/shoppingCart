@@ -1,0 +1,207 @@
+/* Variables CSS */
+:root {
+    --color-primario: #9bab62b9;
+    --color-secundario: #28a745;
+    --fuente-primaria: Arial, sans-serif;
+}
+
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+footer h3 {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer ul li {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+
+
+/* Estilos generales */
+body {
+    font-family: var(--fuente-primaria);
+    padding: 15px;
+    background-color: #a8a8a895; /* Color de fondo suave */
+}
+
+
+/* Estilos del carrito */
+#carrito {
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+  
+
+.img_banner {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+  
+/* Estilo del título dentro del banner */
+.titulo-principal {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 5rem;
+    color: rgb(117, 56, 56);
+    text-align: center;
+    position: relative;
+    padding: 20px;
+    border-radius: 10px;
+    overflow:visible;
+}
+  
+.titulo-principal::after {
+    content: 'Bienvenidos';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    color: #8d4444;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    opacity: 0.8;
+    z-index: 2;
+    animation: bounce 2s infinite;
+}
+  
+@keyframes bounce {
+    0%, 100% {
+      transform: translateX(-50%) translateY(0);
+    }
+    50% {
+      transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* Añadir espacio entre los productos */
+#productos {
+    display: static;
+    flex-wrap: wrap;
+    gap: 20px; /* Espacio entre los cuadros */
+    justify-content: center; /* Centra los productos horizontalmente */
+}
+
+.producto {
+    flex: 0 1 calc(33.333% - 20px); /* Ajusta el ancho y permite flexibilidad */
+    margin-bottom: 20px; /* Espacio debajo de cada cuadro */
+    background: white;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Estilo general para el carrito */
+.carrito {
+    position: fixed;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 400px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px 0 0 10px;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(100%); /* Inicialmente oculto a la derecha */
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    height: 45vh; /*ajuste de altura de la ventana para el scroll*/
+}
+
+.carrito-header {
+    display: flex;
+    justify-content: space-between;
+    /* width: 25vw; ajuste de ancho del header */
+    padding: 10px;
+    background-color: #c0c0c0;
+    border-bottom: 1px solid #ddd;
+  background-color: #c0c0c0;
+}
+
+.carrito-header h5 {
+    font-style: italic;
+    margin: 0;
+}
+
+.carrito-footer {
+    padding: 10px;
+    background-color: #c0c0c0;
+    /* width: 25vw; ajuste de ancho del footer */
+    background-color: #f8f9fa;
+    border-top: 1px solid #ddd;
+    text-align: center;
+  background-color: #c0c0c0;
+}
+
+.productos-carrito {
+    padding: 10px;
+    overflow-y: auto;
+    /* width: 22vw; ajuste de ancho donde aparecen los productos */
+    flex-grow: 1;
+}
+
+/* Estilo para el botón de abrir */
+.carrito-boton {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 1001;
+    border-radius: 50%;
+}
+/* Cambia el color de fondo del botón del carrito al pasar el cursor */
+.carrito-boton:hover {
+  background-color: #7aaeea;
+}
+/* Estilo para el contador */
+#contadorCarrito {
+  position: absolute;
+  top: -10px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 9px;
+  font-size: 16px;
+}
+
+/* Estilos para el botón de cerrar carrito */
+#cerrarCarrito {
+    background: #f44336;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* Animación para cuando el carrito se abre */
+.carrito.abierto {
+    transform: translateX(0); /* El carrito se desplaza hacia la izquierda */
+}
+
+#carrito.abierto ~ #abrirCarrito {
+    display: none;
+}
