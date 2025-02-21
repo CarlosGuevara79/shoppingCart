@@ -4,7 +4,33 @@
     --color-secundario: #28a745;
     --fuente-primaria: Arial, sans-serif;
 }
-  
+
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+footer h3 {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer ul li {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+
 
 /* Estilos generales */
 body {
@@ -23,17 +49,14 @@ body {
     margin-top: 20px;
 }
   
-/* Estilos del banner */
-.banner {
+
+.img_banner {
     width: 100%;
-    padding: 50px 10px;
-    background: linear-gradient(to right, var(--color-primario), #7aaeea);
+    height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 10px 23px 305px rgba(147, 173, 228, 0.43);
     position: relative;
-    margin-bottom: 40px;
 }
   
 /* Estilo del título dentro del banner */
