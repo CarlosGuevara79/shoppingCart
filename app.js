@@ -1,5 +1,5 @@
 // Lista de productos con rutas de imágenes y cantidad disponible
-import {productos} from "./data/productos.js";
+import { productos } from "./data/productos.js";
 
 let productosCarrito = [];
 const carrito = document.getElementById('carrito');
@@ -9,46 +9,103 @@ const cerrarCarritoBtn = document.getElementById('cerrarCarrito');
 function showProducts() {
     const productList = document.getElementById('productos');
     productList.innerHTML = ''; // Limpiar la lista antes de agregar productos
-
     productos.forEach(producto => {
+        //constante para colocar en los valores que se agoto el producto
+        const agotado = producto.cantidadDisponible === 0;
         const productCard = document.createElement('div');
         productCard.className = 'col-md-4 producto';
+
         productCard.innerHTML = `
-            <div class="card">
-                <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
-                <div class="card-body">
-                    <h5 class="card-title">${producto.nombre}</h5>
-                    <p class="card-text">$${producto.precio.toFixed(2)}</p>
-                    <p class="card-text">Cantidad disponible: ${producto.cantidadDisponible}</p>
-                    <input type="number" min="1" max="${producto.cantidadDisponible}" value="1" id="quantity-${producto.id}" class="form-control mb-2">
-                    <button class="btn btn-primary" onclick="addToCart(${producto.id})">Agregar al Carrito</button>
-                </div>
+        <div class="card">
+            <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
+            <div class="card-body">
+                <h5 class="card-title">${producto.nombre}</h5>
+                <p class="card-text">$${producto.precio.toFixed(2)}</p>
+                <p class="card-text ${agotado ? 'text-danger fw-bold' : ''}">
+                    ${agotado ? 'Agotado' : `Cantidad disponible: ${producto.cantidadDisponible}`}
+                </p>
+                <input type="number" 
+                onkeydown="return filtro(event)" 
+                oninput="validarCantidad(this)" 
+                min="1" 
+                max="${producto.cantidadDisponible}" 
+                value="${agotado ? '0' : '1'}" 
+                id="quantity-${producto.id}" 
+                class="form-control mb-2"
+                ${agotado ? 'disabled' : ''}>
+                <button class="btn btn-primary" 
+                    onclick="addToCart(${producto.id})"
+                    ${agotado ? 'disabled' : ''}>
+                    Agregar al Carrito
+                </button>
             </div>
-        `;
+        </div>
+    `;
+
         productList.appendChild(productCard);
     });
 }
 
+// Evita que se escriban letras, signos y decimales
+ // Evita que se ingresen valores no validos
+window.filtro = function filtro(event) {
+    // Permitir solo números (0-9), teclas de navegación y Backspace
+    if (
+        event.key >= '0' && event.key <= '9' ||
+        event.key === 'Backspace' ||
+        event.key === 'ArrowLeft' ||
+        event.key === 'ArrowRight' ||
+        event.key === 'Delete'
+    ) {
+        return true;
+    }
+    event.preventDefault();
+    return false;
+}
+
+// Evita que se ingresen valores no validos
+window.validarCantidad = function validarCantidad(input) {
+    input.value = input.value.replace(/[^0-9]/g, ''); // Elimina todo lo que no sea número
+    let max = parseInt(input.max);
+    let min = parseInt(input.min);
+
+    if (input.value === '' || isNaN(input.value)) {
+        input.value = min; // Si queda vacío, se coloca el mínimo permitido
+    } else if (parseInt(input.value) > max) {
+        alert("Cantidad no válida el maximo es: " +max);
+        input.value = max; // No permite superar el máximo disponible
+    } else if (parseInt(input.value) < min) {
+        input.value = min; // No permite valores menores al mínimo
+    }
+}
+
+
+
 // Agrega un producto al carrito
 window.addToCart = function addToCart(productId) {
     const producto = productos.find(p => p.id === productId);
-    const cantidad = parseInt(document.getElementById(`quantity-${productId}`).value);
+    const cantidadInput = document.getElementById(`quantity-${productId}`);
+    const cantidad = parseInt(cantidadInput.value);
 
-    if (cantidad > 0 && cantidad <= producto.cantidadDisponible) {
-        const productoEnCarrito = productosCarrito.find(p => p.id === productId);
-        if (productoEnCarrito) {
-            productoEnCarrito.cantidad += cantidad;
-        } else {    
-            productosCarrito.push({ ...producto, cantidad: cantidad });
-        }
-        producto.cantidadDisponible -= cantidad;
-        const scrollY = window.scrollY;
-        updateCart();
-        showProducts();
-        window.scrollTo(0, scrollY);
-    } else {
+    if (isNaN(cantidad) || cantidad < 1 || cantidad > producto.cantidadDisponible) {
         alert("Cantidad no válida.");
+        return;
     }
+
+    const productoEnCarrito = productosCarrito.find(p => p.id === productId);
+    if (productoEnCarrito) {
+        productoEnCarrito.cantidad += cantidad;
+    } else {
+        productosCarrito.push({ ...producto, cantidad: cantidad });
+    }
+
+    producto.cantidadDisponible -= cantidad;
+
+    // Mantener la posición de la página
+    const scrollY = window.scrollY;
+    updateCart();
+    showProducts();
+    window.scrollTo(0, scrollY);
 }
 
 // Actualiza el carrito de compras
@@ -97,16 +154,16 @@ window.deleteFromCart = function deleteFromCart(productId) {
 
 // Vacia el carrito--
 window.deleteAllFromCart = function deleteAllFromCart() {
-  // Restaura las cantidades disponibles del carrito
-  for (let i = 0; i < productosCarrito.length; i++) {
-    const producto = productosCarrito[i];
-    const productoOriginal = productos.find((p) => p.id === producto.id);
-    productoOriginal.cantidadDisponible += producto.cantidad;
-  }
-  // Limpia la lista de productos del carrito
-  productosCarrito = [];
-  updateCart();
-  showProducts();
+    // Restaura las cantidades disponibles del carrito
+    for (let i = 0; i < productosCarrito.length; i++) {
+        const producto = productosCarrito[i];
+        const productoOriginal = productos.find((p) => p.id === producto.id);
+        productoOriginal.cantidadDisponible += producto.cantidad;
+    }
+    // Limpia la lista de productos del carrito
+    productosCarrito = [];
+    updateCart();
+    showProducts();
 };
 
 // Resto del código permanece igual
@@ -162,7 +219,7 @@ window.generateInvoice = function generateInvoice() {
 }
 
 // Modificar el evento de clic en el botón "Pagar"
-document.getElementById('pagar').addEventListener('click', function() {
+document.getElementById('pagar').addEventListener('click', function () {
     if (productosCarrito.length === 0) {
         alert('El carrito está vacío.');
         return;
@@ -195,7 +252,7 @@ window.updateProductCount = function updateProductCount() {
     const contador = productosCarrito.reduce((total, producto) => total + producto.cantidad, 0);
     const contadorCarrito = document.getElementById('contadorCarrito');
 
-        contadorCarrito.textContent = contador; // Si el carrito está vacío aparecera en 0, pero aumentara de valor conforme se vallan añadiendo productos
+    contadorCarrito.textContent = contador; // Si el carrito está vacío aparecera en 0, pero aumentara de valor conforme se vallan añadiendo productos
 }
 
 // Inicializa la tienda
