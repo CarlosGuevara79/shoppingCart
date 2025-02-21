@@ -27,9 +27,8 @@ function showProducts() {
                 <input type="number" 
                 onkeydown="return filtro(event)" 
                 oninput="validarCantidad(this)" 
-                min="1" 
                 max="${producto.cantidadDisponible}" 
-                value="${agotado ? '0' : '1'}" 
+                value="${agotado ? '0' : ''}" 
                 id="quantity-${producto.id}" 
                 class="form-control mb-2"
                 ${agotado ? 'disabled' : ''}>
@@ -166,57 +165,26 @@ window.deleteAllFromCart = function deleteAllFromCart() {
     showProducts();
 };
 
-// Resto del código permanece igual
-
 // Nueva función para generar la factura
 window.generateInvoice = function generateInvoice() {
-    const facturaDiv = document.getElementById('factura');
-    facturaDiv.innerHTML = ''; // Limpiar cualquier factura anterior
+    if (productosCarrito.length === 0) {
+        alert('El carrito está vacío.');
+        return;
+    }
 
-    const tituloFactura = document.createElement('h3');
-    tituloFactura.textContent = 'Factura de Compra';
-    facturaDiv.appendChild(tituloFactura);
+    // Configuración del impuesto (ejemplo: 13% de IVA)
+    const impuestoConfigurado = 0.13;
 
-    const tabla = document.createElement('table');
-    tabla.className = 'table mt-3';
+    // Guardar datos en localStorage para pasarlos a la factura
+    localStorage.setItem("productosCarrito", JSON.stringify(productosCarrito));
+    localStorage.setItem("impuesto", impuestoConfigurado);
 
-    const encabezado = document.createElement('thead');
-    encabezado.innerHTML = `
-        <tr>
-            <th>Producto</th>
-            <th>Cantidad</th>
-            <th>Precio Unitario</th>
-            <th>Total</th>
-        </tr>
-    `;
-    tabla.appendChild(encabezado);
+    // Redirigir a la página de factura
+    window.location.href = "factura.html";
+};
 
-    const cuerpoTabla = document.createElement('tbody');
-
-    let totalFactura = 0;
-    productosCarrito.forEach(producto => {
-        const fila = document.createElement('tr');
-        fila.innerHTML = `
-            <td>${producto.nombre}</td>
-            <td>${producto.cantidad}</td>
-            <td>$${producto.precio.toFixed(2)}</td>
-            <td>$${(producto.precio * producto.cantidad).toFixed(2)}</td>
-        `;
-        cuerpoTabla.appendChild(fila);
-        totalFactura += producto.precio * producto.cantidad;
-    });
-
-    tabla.appendChild(cuerpoTabla);
-
-    const filaTotal = document.createElement('tr');
-    filaTotal.innerHTML = `
-        <td colspan="3" class="text-right font-weight-bold">Total</td>
-        <td class="font-weight-bold">$${totalFactura.toFixed(2)}</td>
-    `;
-    cuerpoTabla.appendChild(filaTotal);
-
-    facturaDiv.appendChild(tabla);
-}
+// Evento para el botón "Pagar"
+document.getElementById('pagar').addEventListener('click', generateInvoice);
 
 // Modificar el evento de clic en el botón "Pagar"
 document.getElementById('pagar').addEventListener('click', function () {

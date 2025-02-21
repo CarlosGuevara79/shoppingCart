@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factura</title>
+    <link rel="stylesheet" href="css/style.css"> <!-- Ruta al CSS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> <!-- Librería jsPDF -->
+</head>
+<body>
+    <script src="components/header.js"></script>
+    <div class="container">
+        <h2 class="text-center">Factura de Compra</h2>
+        <div id="factura"></div>
+
+        <div class="buttons">
+            <button onclick="seguirComprando()" class="btn btn-secondary">Seguir Comprando</button>
+            <button onclick="descargarFactura()" class="btn btn-success">Descargar Factura</button>
+        </div>
+    </div>
+
+    <script src="/utils/factura.js"></script>
+    <script src="components/footer.js"></script>
+</body>
+</html>
