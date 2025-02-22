@@ -28,7 +28,7 @@ function showProducts() {
                 onkeydown="return filtro(event)" 
                 oninput="validarCantidad(this)" 
                 max="${producto.cantidadDisponible}" 
-                value="${agotado ? '0' : ''}" 
+                value="${agotado ? '0' : '1'}" 
                 id="quantity-${producto.id}" 
                 class="form-control mb-2"
                 ${agotado ? 'disabled' : ''}>
