@@ -10,7 +10,7 @@ export const productos = [
     {
         imagen: "./assets/img/img2.png",
         id: 2,
-        nombre: "Zapatilla deportiva Onitsuka Tiger",
+        nombre: "Zapatilla deportiva Tiger",
         precio: 400,
         color: "Amarilla",
         cantidadDisponible: 5
