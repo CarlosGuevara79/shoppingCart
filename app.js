@@ -297,3 +297,4 @@ document.getElementById('reiniciarCompras').addEventListener('click', function (
 
 // Inicializa la tienda
 showProducts();
+updateCart();

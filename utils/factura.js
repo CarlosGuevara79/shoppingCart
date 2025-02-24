@@ -76,7 +76,7 @@ function seguirComprando() {
         productosCarrito.forEach(productoComprado => {
             const productoEnInventario = productos.find(p => p.id === productoComprado.id);
             if (productoEnInventario) {
-                productoEnInventario.cantidadDisponible -= productoComprado.cantidad;
+                // productoEnInventario.cantidadDisponible -= productoComprado.cantidad;
                 if (productoEnInventario.cantidadDisponible < 0) {
                     productoEnInventario.cantidadDisponible = 0; // Evitar stock negativo
                 }
@@ -88,7 +88,7 @@ function seguirComprando() {
     }
 
     // Vaciar el carrito después de la compra
-    localStorage.setItem("productosCarrito", JSON.stringify([]));
+    // localStorage.setItem("productosCarrito", JSON.stringify([]));
 
     // Redirigir a la página principal
     window.location.href = "index.html";
